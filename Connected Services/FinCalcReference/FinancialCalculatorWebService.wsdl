@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://myfinancialcalculatorwebservice.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://myfinancialcalculatorwebservice.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://myfinancialcalculatorwebservice.org/">
+      <s:element name="CalculateSimpleInterest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="principalAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="annualInterestRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeInDays" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateSimpleInterestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalculateSimpleInterestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculatePrincipal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="simpleInterest" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="annualInterestRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeInDays" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculatePrincipalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalculatePrincipalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="principalAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="simpleInterest" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeInDays" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalculateRateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="principalAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="simpleInterest" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="annualInterestRate" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalculateTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CalculateSimpleInterestSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculateSimpleInterest" />
+  </wsdl:message>
+  <wsdl:message name="CalculateSimpleInterestSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateSimpleInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculatePrincipalSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculatePrincipal" />
+  </wsdl:message>
+  <wsdl:message name="CalculatePrincipalSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculatePrincipalResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculateRateSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculateRate" />
+  </wsdl:message>
+  <wsdl:message name="CalculateRateSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculateTime" />
+  </wsdl:message>
+  <wsdl:message name="CalculateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FinancialCalculatorWebServiceSoap">
+    <wsdl:operation name="CalculateSimpleInterest">
+      <wsdl:input message="tns:CalculateSimpleInterestSoapIn" />
+      <wsdl:output message="tns:CalculateSimpleInterestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculatePrincipal">
+      <wsdl:input message="tns:CalculatePrincipalSoapIn" />
+      <wsdl:output message="tns:CalculatePrincipalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculateRate">
+      <wsdl:input message="tns:CalculateRateSoapIn" />
+      <wsdl:output message="tns:CalculateRateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculateTime">
+      <wsdl:input message="tns:CalculateTimeSoapIn" />
+      <wsdl:output message="tns:CalculateTimeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FinancialCalculatorWebServiceSoap" type="tns:FinancialCalculatorWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CalculateSimpleInterest">
+      <soap:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculateSimpleInterest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculatePrincipal">
+      <soap:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculatePrincipal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateRate">
+      <soap:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculateRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateTime">
+      <soap:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FinancialCalculatorWebServiceSoap12" type="tns:FinancialCalculatorWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CalculateSimpleInterest">
+      <soap12:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculateSimpleInterest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculatePrincipal">
+      <soap12:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculatePrincipal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateRate">
+      <soap12:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculateRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateTime">
+      <soap12:operation soapAction="http://myfinancialcalculatorwebservice.org/CalculateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FinancialCalculatorWebService">
+    <wsdl:port name="FinancialCalculatorWebServiceSoap" binding="tns:FinancialCalculatorWebServiceSoap">
+      <soap:address location="https://localhost:44367/FinancialCalculatorWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FinancialCalculatorWebServiceSoap12" binding="tns:FinancialCalculatorWebServiceSoap12">
+      <soap12:address location="https://localhost:44367/FinancialCalculatorWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
